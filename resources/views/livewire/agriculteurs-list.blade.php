@@ -72,7 +72,7 @@
     <h3>Question 11: </h3>
     <ul>
         @foreach($question11 as $quest11)
-            <li><strong>Affichez le nom de la plus petite parcelle :</strong> {{$question['agr_nom']}}</li>
+            <li>Affichez le nom de la plus petite parcelle :{{$question['agr_nom']}}</li>
         @endforeach
     </ul>
 
