@@ -30,16 +30,24 @@ class AgriculteursList extends Component
         $to = date('2012-02-9');
         $this->question5=Intervention::whereBetween("int_debut",[$from,$to])->get();
        // $this->question5=Intervention::all();
+        
         $this->question6=Intervention::join('parcelles', 'interventions.parcelle_id', '=', 'parcelles.id')->get(['parcelles.par_nom','interventions.*']);
+        
         $this->question77=Intervention::join('employes', 'interventions.emp_nss', '=', 'employes.emp_nss')->get(['employes.emp_nom','interventions.*']);
+        
         $this->question7=Intervention::join('parcelles', 'interventions.parcelle_id', '=', 'parcelles.id')
             ->join('employes', 'interventions.emp_nss', '=', 'employes.emp_nss')
             ->get(['parcelles.par_nom','employes.emp_nom','interventions.*']);
 
-        $this->question8 = Agriculteur::all("agr_nom")->sortBy("agr_nom");
+        $this->question8 = Intervention::join('employes', 'interventions.emp_nss', '>', 'employes.emp_nss')->where("employes.emp_nom",">","Pernet")->get(['employes.emp_nom','interventions.int_debut']);
+        
         $this->question9 = Agriculteur::all("agr_nom")->sortBy("agr_nom");
+        
         $this->question10 = Agriculteur::all("agr_nom")->sortBy("agr_nom");
+        
         $this->question11 = Agriculteur::all("agr_nom")->sortBy("agr_nom");
+        
+        
         return view('livewire.agriculteurs-list',['question1'=>$this->question1,
             'question2'=>$this->question2,
             'question3'=>$this->question3,
