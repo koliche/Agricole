@@ -13,4 +13,8 @@ class Agriculteur extends Model
         'agr_prn',
         'agr_resid',
     ];
+
+    public function parcelles(){
+        return $this->belongsTo(parcelles::class);
+    }
 }

@@ -13,4 +13,11 @@ class Employe extends Model
         'emp_nom',
         'emp_prn',
     ];
+    public function tarifs(){
+        return $this->hasMany(tarifs::class);
+    }
+    public function parcelles(){
+        return $this->belongsTo(parcelles::class)->using(interventions::class);
+    }
 }
+

@@ -13,4 +13,11 @@ class Parcelle extends Model
         'par_lieu',
         'par_superficie',
     ];
+
+    public function emploiyes(){
+        $this->hasMany(emploiyes::class)->using(Interventions::class);
+    }
+    public function agriculteurs(){
+        $this->hasMany(agriculteurs::class);
+    }
 }
