@@ -47,33 +47,34 @@
     <h3>Question 7: </h3>
     <ul>
         @foreach($question77 as $quest77)
-            <li><strong>Debut d'intervention</strong>  : {{$quest77['int_debut']}} <strong>le nom de la parcelle concernée:</strong>  le nom de
-                l’employé : {{$quest77['emp_nom']}}</li>
+            <li><strong>Debut d'intervention</strong>  : {{$quest77['int_debut']}} 
+                <strong>le nom de la parcelle concernée: {{$quest6['par_nom']}}</strong>  
+                <strong>le nom de l’employé :</strong> {{$quest77['emp_nom']}}</li>
         @endforeach
     </ul>
     <h3>Question 8: </h3>
     <ul>
         @foreach($question8 as $quest8)
-            <li><strong>Affichez les interventions de l’employe Pernet : </strong>{{$question['int_debut']}}</li>
+            <li><strong>Affichez les interventions de l’employe Pernet : </strong>{{$quest8['int_debut']}}</li>
         @endforeach
     </ul>
     <h3>Question 9: </h3>
     <ul>
-        @foreach($question9 as $quest9)
-            <li><strong>Calculez la superficie totale des parcelles : </strong>{{$question['agr_nom']}}</li>
-        @endforeach
+        
+            <li><strong>Calculez la superficie totale des parcelles :{{$question9}} </strong></li>
+        
     </ul>
     <h3>Question 10: </h3>
     <ul>
-        @foreach($question10 as $quest10)
-            <li><strong>Affichez le nom de la plus grande parcelle : </strong>{{$question['agr_nom']}}</li>
-        @endforeach
+       
+            <li><strong>Affichez le nom de la plus grande parcelle : </strong>{{$question10}}</li>
+       
     </ul>
     <h3>Question 11: </h3>
     <ul>
-        @foreach($question11 as $quest11)
-            <li><strong>Affichez le nom de la plus petite parcelle :</strong> {{$question['agr_nom']}}</li>
-        @endforeach
+       
+            <li><strong>Affichez le nom de la plus petite parcelle :</strong> {{$question11}}</li>
+       
     </ul>
 
 

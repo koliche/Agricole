@@ -39,13 +39,14 @@ class AgriculteursList extends Component
             ->join('employes', 'interventions.emp_nss', '=', 'employes.emp_nss')
             ->get(['parcelles.par_nom','employes.emp_nom','interventions.*']);
 
-        $this->question8 = Intervention::join('employes', 'interventions.emp_nss', '>', 'employes.emp_nss')->where("employes.emp_nom",">","Pernet")->get(['employes.emp_nom','interventions.int_debut']);
+        $this->question8 = Intervention::join('employes', 'interventions.emp_nss', '=', 'employes.emp_nss')
+        ->select('employes.emp_nom','interventions.*')->where("employes.emp_nom","Pernet")->get();
         
-        $this->question9 = Agriculteur::all("agr_nom")->sortBy("agr_nom");
+        $this->question9 = Parcelle::sum("par_superficie");
         
-        $this->question10 = Agriculteur::all("agr_nom")->sortBy("agr_nom");
+        $this->question10 =  Parcelle::select('par_nom')->orderBy('par_superficie', 'asc')->first();
         
-        $this->question11 = Agriculteur::all("agr_nom")->sortBy("agr_nom");
+        $this->question11 = Parcelle::select('par_nom')->orderBy('par_superficie', 'desc')->first();
         
         
         return view('livewire.agriculteurs-list',['question1'=>$this->question1,
