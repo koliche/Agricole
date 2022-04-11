@@ -48,7 +48,7 @@
     <ul>
         @foreach($question77 as $quest77)
             <li><strong>Debut d'intervention</strong>  : {{$quest77['int_debut']}} 
-                <strong>le nom de la parcelle concernée: {{$quest6['par_nom']}}</strong>  
+                <strong>le nom de la parcelle concernée:</strong>   {{$quest77['par_nom']}}
                 <strong>le nom de l’employé :</strong> {{$quest77['emp_nom']}}</li>
         @endforeach
     </ul>

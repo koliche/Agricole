@@ -22,22 +22,18 @@ class AgriculteursList extends Component
         $this->question2=Parcelle::where("par_superficie",">",500)->get();
         $this->question3=Parcelle::where("par_lieu","Arith","and")->whereBetween("par_superficie",[200,500])->get();
         $this->question4=Parcelle::join('agriculteurs', 'parcelles.agriculteur_id', '=', 'agriculteurs.id')->get(['parcelles.*','agriculteurs.agr_nom']);
-        /*$this->question5=Intervention::join('parcelles', 'interventions.parcelle_id', '=', 'parcelles.id')
-            ->join('employes', 'interventions.Int_Emp_Nss', '=', 'employes.Emp_Nss')
-            ->get(['parcelles.Par_Nom','interventions.*','employes.Emp_Nom']);*/
-        //$this->question5=Intervention::whereBetween("int_debut",[2011-11-07,2012-02-9])->get();
+        
         $from = date('2011-11-07');
         $to = date('2012-02-9');
         $this->question5=Intervention::whereBetween("int_debut",[$from,$to])->get();
-       // $this->question5=Intervention::all();
+       
         
         $this->question6=Intervention::join('parcelles', 'interventions.parcelle_id', '=', 'parcelles.id')->get(['parcelles.par_nom','interventions.*']);
         
-        $this->question77=Intervention::join('employes', 'interventions.emp_nss', '=', 'employes.emp_nss')->get(['employes.emp_nom','interventions.*']);
+        $this->question77=Intervention::join('employes', 'interventions.emp_nss', '=', 'employes.emp_nss')
+        ->join('parcelles', 'interventions.parcelle_id', '=', 'parcelles.id')
+        ->get(['employes.emp_nom','parcelles.par_nom','interventions.*']);
         
-        $this->question7=Intervention::join('parcelles', 'interventions.parcelle_id', '=', 'parcelles.id')
-            ->join('employes', 'interventions.emp_nss', '=', 'employes.emp_nss')
-            ->get(['parcelles.par_nom','employes.emp_nom','interventions.*']);
 
         $this->question8 = Intervention::join('employes', 'interventions.emp_nss', '=', 'employes.emp_nss')
         ->select('employes.emp_nom','interventions.*')->where("employes.emp_nom","Pernet")->get();
