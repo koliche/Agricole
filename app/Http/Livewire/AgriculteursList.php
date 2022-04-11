@@ -40,9 +40,9 @@ class AgriculteursList extends Component
         
         $this->question9 = Parcelle::sum("par_superficie");
         
-        $this->question10 =  Parcelle::select('par_nom')->orderBy('par_superficie', 'asc')->first();
+        $this->question10 =  Parcelle::select('par_nom')->orderBy('par_superficie', 'desc')->first();
         
-        $this->question11 = Parcelle::select('par_nom')->orderBy('par_superficie', 'desc')->first();
+        $this->question11 = Parcelle::select('par_nom')->orderBy('par_superficie', 'asc')->first();
         
         
         return view('livewire.agriculteurs-list',['question1'=>$this->question1,
@@ -52,7 +52,6 @@ class AgriculteursList extends Component
             'question5'=>$this->question5,
             'question6'=>$this->question6,
             'question77'=>$this->question77,
-            'question7'=>$this->question7,
             'question8'=>$this->question8,
             'question9'=>$this->question9,
             'question10'=>$this->question10,
